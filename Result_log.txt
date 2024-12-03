@@ -1,0 +1,69 @@
+commands: gcc -o executableName AssemblyName.s Cwrapper.c
+
+		sudo perf stat -a -I 200 -x, -e instructions,cache-misses,L1-dcache-loads,L1-	  	  dcache-stores,branch-instructions,branch-misses,cache-references,cpu-  	  	  cycles,r110,r13C,r1A2,r1C2 ./executable
+	   
+		time ./executableName
+
+		sudo perf stat -e cycles ./executableName
+	
+
+
+rojan@rxs7318:~ $ sudo perf stat -a -I 200 -x, -e instructions,cache-misses,L1-dcache-loads,L1-dcache-stores,branch-instructions,branch-misses,cache-references,cpu-cycles,r110,r13C,r1A2,r1C2 ./unoptimised
+0.000261848,2623575,,instructions,1958439,48.00,0.30,insn per cycle
+0.000261848,24749,,cache-misses,5476981,100.00,2.98,of all cache refs
+0.000261848,829026,,L1-dcache-loads,5472352,100.00,,
+0.000261848,352346,,L1-dcache-stores,5465741,100.00,,
+0.000261848,<not supported>,,branch-instructions,0,100.00,,
+0.000261848,14767,,branch-misses,5457092,100.00,,
+0.000261848,829558,,cache-references,5446072,100.00,,
+0.000261848,4508181,,cpu-cycles,5431795,100.00,,
+0.000261848,2604,,r110,2883425,53.00,,
+0.000261848,<not counted>,,r13C,0,0.00,,
+0.000261848,<not counted>,,r1A2,0,0.00,,
+0.000261848,<not counted>,,r1C2,0,0.00,,
+Workload failed: No such file or directory
+
+rojan@rxs7318:~ $ sudo perf stat -a -I 200 -x, -e instructions,cache-misses,L1-dcache-loads,L1-dcache-stores,branch-instructions,branch-misses,cache-references,cpu-cycles,r110,r13C,r1A2,r1C2 ./loop_unrolling
+0.000431623,1845069,,instructions,12694849,56.00,0.77,insn per cycle
+0.000431623,25071,,cache-misses,17188301,100.00,2.99,of all cache refs
+0.000431623,836817,,L1-dcache-loads,17173339,100.00,,
+0.000431623,357935,,L1-dcache-stores,17153651,100.00,,
+0.000431623,<not supported>,,branch-instructions,0,100.00,,
+0.000431623,15128,,branch-misses,17155392,100.00,,
+0.000431623,838709,,cache-references,17126095,100.00,,
+0.000431623,3524615,,cpu-cycles,17090150,100.00,,
+0.000431623,20084,,r110,7529483,44.00,,
+0.000431623,<not counted>,,r13C,0,0.00,,
+0.000431623,<not counted>,,r1A2,0,0.00,,
+0.000431623,<not counted>,,r1C2,0,0.00,,
+Workload failed: No such file or directory
+
+rojan@rxs7318:~ $ sudo perf stat -a -I 200 -x, -e instructions,cache-misses,L1-dcache-loads,L1-dcache-stores,branch-instructions,branch-misses,cache-references,cpu-cycles,r110,r13C,r1A2,r1C2 ./memory_access_management
+0.003232398,6654313,,instructions,14880909,31.00,0.33,insn per cycle
+0.003232398,55932,,cache-misses,21599519,86.00,1.77,of all cache refs
+0.003232398,3166286,,L1-dcache-loads,24969815,100.00,,
+0.003232398,1081653,,L1-dcache-stores,24959427,100.00,,
+0.003232398,<not supported>,,branch-instructions,0,100.00,,
+0.003232398,29210,,branch-misses,24943315,100.00,,
+0.003232398,3167102,,cache-references,24924055,100.00,,
+0.003232398,10385561,,cpu-cycles,24900351,100.00,,
+0.003232398,447498,,r110,17229795,69.00,,
+0.003232398,0,,r13C,3432427,13.00,,
+0.003232398,<not counted>,,r1A2,0,0.00,,
+0.003232398,<not counted>,,r1C2,0,0.00,,
+Workload failed: No such file or directory
+
+rojan@rxs7318:~ $ sudo perf stat -a -I 200 -x, -e instructions,cache-misses,L1-dcache-loads,L1-dcache-stores,branch-instructions,branch-misses,cache-references,cpu-cycles,r110,r13C,r1A2,r1C2 ./instruction_pipline
+0.000465308,2451522,,instructions,10613479,62.00,0.53,insn per cycle
+0.000465308,36154,,cache-misses,16865389,99.00,1.92,of all cache refs
+0.000465308,1880427,,L1-dcache-loads,16997795,100.00,,
+0.000465308,716274,,L1-dcache-stores,16973463,100.00,,
+0.000465308,<not supported>,,branch-instructions,0,100.00,,
+0.000465308,20960,,branch-misses,16929000,100.00,,
+0.000465308,1879086,,cache-references,16891759,100.00,,
+0.000465308,6166491,,cpu-cycles,16849445,100.00,,
+0.000465308,123026,,r110,6443166,38.00,,
+0.000465308,0,,r13C,188963,1.00,,
+0.000465308,<not counted>,,r1A2,0,0.00,,
+0.000465308,<not counted>,,r1C2,0,0.00,,
+Workload failed: No such file or directory
